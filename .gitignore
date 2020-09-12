@@ -1,0 +1,19 @@
+*.iml
+*.ipr
+*.iws
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+
+/target/
+
+config/application-local.yml
+
+### IntelliJ IDEA ###
+.idea/
+*.iml
+bin
+LOG_FILE_IS_UNDEFINED
