@@ -43,22 +43,31 @@ public class SortNum {
 	}
 	
 	//------------------------------------HEAP SORT--------------------->
-	public static void heapify(int numArr[], int k) {
-		int len = numArr.length;
-		
+	public static void heapify(int numArr[], int k, int len) {
+
+		while(2*k + 1 < len) {
+			int lc = 2*k + 1;		
+			if(lc + 1 < len && numArr[lc] < numArr[lc+1]) {
+				lc = lc+1;
+			}
+			if(numArr[k] <numArr[lc]) {
+				exch(numArr, lc, k);
+				k =lc;
+			}else break;	
+		}
 	}
 	
 	public static void heapSort(int numArr[]) {
 		if (numArr.length ==1 || numArr.length == 0) return ;
 		int k = numArr.length/2;
 		for(int i = k;i>=0; i--) {
-			heapify(numArr, k);
+			heapify(numArr, i, numArr.length);
 		}
-		int len = numArr.length-1;
-		exch(numArr, 0, len--);
+		int len = numArr.length;
+		exch(numArr, 0, --len);
 		while(len > 0) {
-			heapify(numArr, 0);
-			exch(numArr,0, len--);
+			heapify(numArr, 0,len);
+			exch(numArr,0, --len);
 		}
 	}
 	
@@ -98,7 +107,7 @@ public class SortNum {
 	//------------------------------------  MAIN -------------------
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int len =20;
+		int len =21;
 		int numArr[] =//{388, 880 ,583, 427, 57, 410, 664, 407, 465, 673, 76, 631, 529, 568, 828, 2, 796, 583, 716, 568};
 				new int[len];
 		for(int i =0;i<len;++i) {
@@ -106,7 +115,8 @@ public class SortNum {
 			System.out.print(numArr[i] + " ");
 		}
 		//mergeSort(numArr);
-		quickSort(numArr, 0, numArr.length-1);
+		//quickSort(numArr, 0, numArr.length-1);
+		heapSort(numArr);
 		System.out.println("Sorted Array is" );
 		for(int i =0;i<len;++i) {
 			System.out.print(numArr[i] + " ");
