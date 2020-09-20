@@ -43,8 +43,23 @@ public class SortNum {
 	}
 	
 	//------------------------------------HEAP SORT--------------------->
-	public static void heapSort(int numArr[]) {
+	public static void heapify(int numArr[], int k) {
+		int len = numArr.length;
 		
+	}
+	
+	public static void heapSort(int numArr[]) {
+		if (numArr.length ==1 || numArr.length == 0) return ;
+		int k = numArr.length/2;
+		for(int i = k;i>=0; i--) {
+			heapify(numArr, k);
+		}
+		int len = numArr.length-1;
+		exch(numArr, 0, len--);
+		while(len > 0) {
+			heapify(numArr, 0);
+			exch(numArr,0, len--);
+		}
 	}
 	
 	//------------------------------------ MERGE SORT-------------------
