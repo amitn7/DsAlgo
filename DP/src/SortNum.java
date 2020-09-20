@@ -1,14 +1,49 @@
 
 public class SortNum {
+
+	public static void exch(int[] num, int l, int r) {
+		int temp = num[l] ;
+		num[l] =num[r];
+		num[r]= temp;
+	}
 	//public static int numArr[] = new int[20];
 	//------------------------------QUICK SORT------------------------------>
-	
-	public void quickSort(int numArr[]) {
-		
+
+
+
+	public static int partition(int numArr[], int l, int r){
+		int partVal = numArr[l];
+		int hi = r+1;
+
+		int i = l;
+		while(true){
+			while(numArr[++l] < partVal)
+				if(l == r) break;
+			while(partVal < numArr[--hi])
+				if( hi == i	) break;
+			if(l>=hi) {
+				exch(numArr,i,hi);
+				break;
+			}
+			exch(numArr,l,hi);
+		}
+
+
+		return hi;
+
+
+	}
+	public static void quickSort(int numArr[], int l, int r) {
+
+		if(r<=l) return;
+		int q = partition(numArr, l, r);
+
+		quickSort(numArr, l, q-1);
+		quickSort(numArr, q+1, r);
 	}
 	
 	//------------------------------------HEAP SORT--------------------->
-	public void heapSort(int numArr[]) {
+	public static void heapSort(int numArr[]) {
 		
 	}
 	
@@ -49,12 +84,14 @@ public class SortNum {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int len =20;
-		int numArr[] = new int[len];                         
+		int numArr[] =//{388, 880 ,583, 427, 57, 410, 664, 407, 465, 673, 76, 631, 529, 568, 828, 2, 796, 583, 716, 568};
+				new int[len];
 		for(int i =0;i<len;++i) {
 			numArr[i] = (int)(Math.random() * 1000 + 1);
 			System.out.print(numArr[i] + " ");
 		}
-		mergeSort(numArr);
+		//mergeSort(numArr);
+		quickSort(numArr, 0, numArr.length-1);
 		System.out.println("Sorted Array is" );
 		for(int i =0;i<len;++i) {
 			System.out.print(numArr[i] + " ");
