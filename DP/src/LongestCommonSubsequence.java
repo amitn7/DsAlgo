@@ -9,7 +9,7 @@
  */
 public class LongestCommonSubsequence {
 
-	public static int  lcs(String str1, String str2) {
+	public static void  lcs(String str1, String str2) {
 		int lcs[][] = new int[str1.length()+1][str2.length()+1];
 		for(int i = 0; i<=str1.length(); ++i) {
 			for(int j =0 ;j<=str2.length(); ++j) {
@@ -22,13 +22,20 @@ public class LongestCommonSubsequence {
 				}
 			}
 		}
-		return lcs[str1.length()][str2.length()];
+		int len =  lcs[str1.length()][str2.length()];
+		String str = "";
+		int r = str1.length(), c= str2.length();
+		for(int i= len;i>0;i--) {
+			while(true) {
+				
+			}
+		}
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String str1= "Monday",str2 = "ofdcykajsyMeeoeentdyyayy";
-		System.out.print("Length of longest common subsequence is : " + lcs(str2, str1));
+		//System.out.print("Length of longest common subsequence is : " + lcs(str2, str1));
 		
 	}
 
