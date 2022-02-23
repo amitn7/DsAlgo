@@ -3,8 +3,8 @@ import java.util.*;
 
 public class ConnectedComponent {
 
-    // (1, 5), (7, 2), (3, 4), (4, 8), (6, 3), (5, 2)
 
+//------------------------------------------------------------- USING DFS----------
     public static List<List<Integer>> findCommonPairsUsingGraph (List<List<Integer>> list) {
         List<List<Integer>> result = new ArrayList<>();
 
@@ -50,6 +50,8 @@ public class ConnectedComponent {
         }
     }
 
+  //------------------------------------------------------ USING UNION FIND ----------------
+  // -------------------IT CAN BE OPTIMIZED FURTHER USING PATH COMPRESSION AND ADDING SMALL TREE TO ROOT OF LARGE TREE----------------
     public static int findRoot(Map<Integer, Integer> rootMap, int p) {
         while(rootMap.get(p)!= p) {
             p = rootMap.get(p);
